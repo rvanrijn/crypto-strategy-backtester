@@ -2,8 +2,6 @@
 
 A web-based cryptocurrency trading strategy backtester built with Next.js and Python.
 
-![Crypto Strategy Backtester](https://github.com/rvanrijn/crypto-strategy-backtester/assets/528275/your-image-id-here)
-
 ## Features
 
 - **Multi-Timeframe Backtesting**: Test strategies on 15m, 30m, 1h, and 4h timeframes
@@ -11,6 +9,19 @@ A web-based cryptocurrency trading strategy backtester built with Next.js and Py
 - **Custom Strategy Support**: Paste your own Python strategy code directly in the browser
 - **Interactive Visualizations**: Equity curves and performance metrics using Recharts
 - **Modern UI**: Built with shadcn/ui components and Tailwind CSS
+
+## Key Metrics
+
+The backtester provides a rich set of metrics to evaluate your trading strategies:
+
+- **Total Return**: Overall percentage gain or loss
+- **Annual Return**: Annualized performance
+- **Max Drawdown**: Largest peak-to-trough decline
+- **Sharpe Ratio**: Risk-adjusted return measure
+- **Calmar Ratio**: Return relative to max drawdown
+- **Win Rate**: Percentage of winning trades
+- **Total Trades**: Number of completed trades
+- **Avg Win/Loss Ratio**: Comparison of winning trades to losing trades
 
 ## Getting Started
 
@@ -38,12 +49,14 @@ A web-based cryptocurrency trading strategy backtester built with Next.js and Py
    pip install pandas numpy
    ```
 
-4. Create required directories:
-   ```
-   mkdir -p public/data tmp
-   ```
-
-5. Add your CSV data files to the `public/data` directory (e.g., BTCUSD15m.csv).
+4. Add your CSV data files to the `public/data` directory (e.g., BTCUSD15m.csv).
+   The CSV should contain the following columns:
+   - datetime - Timestamp (YYYY-MM-DD HH:MM:SS format)
+   - open - Opening price
+   - high - High price
+   - low - Low price
+   - close - Closing price
+   - volume - Volume traded
 
 ### Running the Application
 
@@ -93,11 +106,25 @@ crypto-strategy-backtester/
 │   ├── page.js             # Main page
 │   └── layout.js           # Root layout
 ├── components/             # React components
+│   ├── ui/                 # shadcn/ui components
+│   ├── backtest-form.jsx   # Backtest configuration form
+│   ├── code-editor.jsx     # Monaco code editor
+│   ├── equity-curve.jsx    # Equity curve chart
+│   ├── metrics-panel.jsx   # Performance metrics display
+│   └── trades-table.jsx    # Trades history table
 ├── lib/                    # Python backtesting engine
+│   ├── backtest_engine.py  # Core backtesting logic
+│   └── backtest_runner.py  # Python script runner
 ├── public/                 # Static assets
 │   └── data/               # CSV datasets
 └── tmp/                    # Temporary files for custom strategies
 ```
+
+## Technologies Used
+
+- **Frontend**: Next.js, React, shadcn/ui, Tailwind CSS, Recharts, Monaco Editor
+- **Backend**: Python, pandas, numpy
+- **Data Visualization**: Recharts
 
 ## License
 
